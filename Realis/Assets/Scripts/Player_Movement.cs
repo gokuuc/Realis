@@ -10,7 +10,10 @@ public class Player_Movement : MonoBehaviour
     public float gravity = -20f;
     public float jumpSpeed = 15;
 
+    private bool jump;
+
     [SerializeField] private Animator animator;
+    [SerializeField] private Joystick _joystick;
     CharacterController characterController;
 
     Vector3 moveVelocity;
@@ -22,25 +25,31 @@ public class Player_Movement : MonoBehaviour
     }
     private void Update()
     {
-        var hInput = Input.GetAxis("Horizontal");
-        var vInput = Input.GetAxis("Vertical");
+        var HorizontalJ = _joystick.Horizontal;
+        var VerticalJ = _joystick.Vertical;
 
-        animator.SetFloat("Speed", Mathf.Abs(hInput + vInput));
+        animator.SetFloat("Speed", Mathf.Abs(HorizontalJ + VerticalJ));
 
         if (characterController.isGrounded)
         {
             animator.SetBool("Jump", false);
-            moveVelocity = transform.forward * speed * vInput;
-            TurnVelocity = transform.up * rotationSpeed * hInput;
-            if (Input.GetButtonDown("Jump"))
+            moveVelocity = transform.forward * speed * VerticalJ;
+            TurnVelocity = transform.up * rotationSpeed * HorizontalJ;
+            if (jump == true)
             {
                 moveVelocity.y = jumpSpeed;
                 animator.SetBool("Jump", true);
+                jump = false;
             }
         }
         //Gravity
         moveVelocity.y += gravity * Time.deltaTime;
         characterController.Move(moveVelocity * Time.deltaTime);
         transform.Rotate(TurnVelocity * Time.deltaTime);
+    }
+
+    public void Jump()
+    {
+        jump = true;
     }
 }
