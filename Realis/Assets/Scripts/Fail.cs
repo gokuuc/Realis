@@ -5,8 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class Fail : MonoBehaviour
 {
+
+    [SerializeField] GameObject Fail_menu;
+
     private void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene("FailScene");
+        Fail_menu.gameObject.SetActive(true);
+        Time.timeScale = 0;
     }
 }

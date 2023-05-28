@@ -14,6 +14,7 @@ public class Player_Movement : MonoBehaviour
 
     [SerializeField] private Animator animator;
     [SerializeField] private Joystick _joystick;
+
     CharacterController characterController;
 
     Vector3 moveVelocity;
@@ -46,6 +47,11 @@ public class Player_Movement : MonoBehaviour
         moveVelocity.y += gravity * Time.deltaTime;
         characterController.Move(moveVelocity * Time.deltaTime);
         transform.Rotate(TurnVelocity * Time.deltaTime);
+
+        if (Finish.finish_level1 == true)
+        {
+            animator.SetBool("Wave", true);
+        }
     }
 
     public void Jump()
