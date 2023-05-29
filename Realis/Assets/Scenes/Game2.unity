@@ -3544,9 +3544,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1811882674}
-        m_TargetAssemblyTypeName: Finish, Assembly-CSharp
-        m_MethodName: next_level
+      - m_Target: {fileID: 75311912}
+        m_TargetAssemblyTypeName: Scenes, Assembly-CSharp
+        m_MethodName: Level2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3714,7 +3714,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Finish_menu: {fileID: 950427467}
   UI: {fileID: 204498186}
-  Next_Button: {fileID: 0}
+  Next_Button: {fileID: 1778428539}
 --- !u!1 &1858937925
 GameObject:
   m_ObjectHideFlags: 0

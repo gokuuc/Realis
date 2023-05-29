@@ -13,4 +13,23 @@ public class Fail : MonoBehaviour
         Fail_menu.gameObject.SetActive(true);
         Time.timeScale = 0;
     }
+
+    public void Retry()
+    {
+        if (SceneManager.GetActiveScene().name == "Game")
+        {
+            SceneManager.LoadScene("Game");
+            Time.timeScale = 1;
+        }
+        if (SceneManager.GetActiveScene().name == "Game1")
+        {
+            SceneManager.LoadScene("Game1");
+            Time.timeScale = 1;
+        }
+        if (SceneManager.GetActiveScene().name == "Game2")
+        {
+            SceneManager.LoadScene("Game2");
+            Time.timeScale = 1;
+        }
+    }
 }

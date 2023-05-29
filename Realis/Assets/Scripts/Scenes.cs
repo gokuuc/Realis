@@ -17,21 +17,30 @@ public class Scenes : MonoBehaviour
 
     public void Level1()
     {
-        SceneManager.LoadScene("Game");
-        Time.timeScale = 1;
-        Fail_Scene.gameObject.SetActive(false);
+        if(Finish.finish_level1 == false)
+        {
+            SceneManager.LoadScene("Game");
+            Time.timeScale = 1;
+            Fail_Scene.gameObject.SetActive(false);
+        }
     }
     public void Level2()
     {
-        SceneManager.LoadScene("Game1");
-        Time.timeScale = 1;
-        Fail_Scene.gameObject.SetActive(false);
+        if (Finish.finish_level2 == false && Finish.finish_level1 == true)
+        {
+            SceneManager.LoadScene("Game1");
+            Time.timeScale = 1;
+            Fail_Scene.gameObject.SetActive(false);
+        }
     }
     public void Level3()
     {
-        SceneManager.LoadScene("Game2");
-        Time.timeScale = 1;
-        Fail_Scene.gameObject.SetActive(false);
+        if (Finish.finish_level3 == false && Finish.finish_level2 == true)
+        {
+            SceneManager.LoadScene("Game2");
+            Time.timeScale = 1;
+            Fail_Scene.gameObject.SetActive(false);
+        }
     }
     public void LevelMenu()
     {
@@ -42,6 +51,15 @@ public class Scenes : MonoBehaviour
         {
             Level1_Button.GetComponent<Image>().color = Color.green;
             Level2_Button.GetComponent<Image>().color = Color.white;
+        }
+        if (Finish.finish_level2 == true)
+        {
+            Level2_Button.GetComponent<Image>().color = Color.green;
+            Level3_Button.GetComponent<Image>().color = Color.white;
+        }
+        if (Finish.finish_level3 == true)
+        {
+            Level3_Button.GetComponent<Image>().color = Color.green;
         }
     }
     public void MainMenu()
